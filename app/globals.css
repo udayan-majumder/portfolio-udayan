@@ -1,26 +1,170 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --menubar-h: 26px;
+  --traffic-red: #ff5f57;
+  --traffic-yellow: #febc2e;
+  --traffic-green: #28c840;
+  --window-radius: 10px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* No webfont on purpose: -apple-system resolves to real SF Pro on Apple
+   devices, which is exactly the face macOS uses, and nothing blocks on a
+   font request. */
+@theme {
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  user-select: none;
+  cursor: default;
+}
+
+/* Placeholder wallpaper — a lofi dusk gradient. Replaced the moment a real
+   image lands in /public/wallpapers (see data/wallpapers.ts). */
+.wallpaper-fallback {
+  background:
+    radial-gradient(ellipse 80% 60% at 18% 8%, #4a2f7a 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 82% 18%, #8c4a75 0%, transparent 55%),
+    radial-gradient(ellipse 100% 40% at 50% 100%, #e08a6b 0%, transparent 70%),
+    linear-gradient(180deg, #150c2b 0%, #2d1b4e 38%, #6b3a5f 72%, #b56b74 100%);
+}
+
+/* GitHub-flavoured markdown, dark theme — used by the GitHub app to render
+   the profile README, which contains raw HTML and GFM tables. */
+.gh-md {
+  color: #e6edf3;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.gh-md [align="center"] {
+  text-align: center;
+}
+.gh-md h1,
+.gh-md h2 {
+  font-weight: 600;
+  margin: 24px 0 16px;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #30363d;
+}
+.gh-md h1 {
+  font-size: 1.75em;
+}
+.gh-md h2 {
+  font-size: 1.4em;
+}
+.gh-md h3 {
+  font-size: 1.15em;
+  font-weight: 600;
+  margin: 24px 0 12px;
+}
+.gh-md p,
+.gh-md ul,
+.gh-md ol,
+.gh-md pre,
+.gh-md blockquote {
+  margin: 0 0 16px;
+}
+.gh-md a {
+  color: #4493f8;
+  text-decoration: none;
+}
+.gh-md a:hover {
+  text-decoration: underline;
+}
+.gh-md ul,
+.gh-md ol {
+  padding-left: 2em;
+}
+.gh-md ul {
+  list-style: disc;
+}
+.gh-md ol {
+  list-style: decimal;
+}
+.gh-md li {
+  margin: 0.25em 0;
+}
+.gh-md img {
+  display: inline-block;
+  max-width: 100%;
+  vertical-align: middle;
+}
+.gh-md hr {
+  border: 0;
+  border-top: 1px solid #30363d;
+  margin: 24px 0;
+}
+.gh-md code {
+  background: rgb(110 118 129 / 0.4);
+  padding: 0.2em 0.4em;
+  border-radius: 6px;
+  font-size: 85%;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.gh-md pre {
+  background: #161b22;
+  padding: 16px;
+  border-radius: 6px;
+  overflow: auto;
+}
+.gh-md pre code {
+  background: none;
+  padding: 0;
+  font-size: 100%;
+}
+.gh-md table {
+  border-collapse: collapse;
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  overflow: auto;
+  margin: 0 0 16px;
+}
+.gh-md th,
+.gh-md td {
+  border: 1px solid #30363d;
+  padding: 6px 13px;
+}
+.gh-md th {
+  background: #161b22;
+  font-weight: 600;
+}
+.gh-md tr:nth-child(2n) td {
+  background: #161b22;
+}
+.gh-md blockquote {
+  border-left: 0.25em solid #30363d;
+  padding: 0 1em;
+  color: #7d8590;
+}
+
+/* macOS-style thin scrollbars inside app windows */
+.mac-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.mac-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.mac-scroll::-webkit-scrollbar-thumb {
+  background: rgb(0 0 0 / 0.25);
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+.mac-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgb(0 0 0 / 0.4);
+  background-clip: content-box;
 }
