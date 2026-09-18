@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { BootScreen } from "@/components/os/BootScreen";
 import { Dock } from "@/components/os/Dock";
 import { DesktopIcon } from "@/components/os/DesktopIcon";
 import { MenuBar } from "@/components/os/MenuBar";
@@ -52,6 +53,8 @@ export function Desktop() {
       <WindowLayer />
 
       <Dock />
+
+      <BootScreen />
     </main>
   );
 }

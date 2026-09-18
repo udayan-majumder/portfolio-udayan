@@ -27,8 +27,8 @@ const registry: Record<AppId, ComponentType<AppProps>> = {
   spotify: dynamic(() =>
     import("@/components/apps/Spotify").then((m) => m.Spotify),
   ),
+  vscode: dynamic(() => import("@/components/apps/VSCode").then((m) => m.VSCode)),
   safari: Placeholder,
-  vscode: Placeholder,
   settings: Placeholder,
 };
 
