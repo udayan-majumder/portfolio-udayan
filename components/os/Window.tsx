@@ -30,19 +30,25 @@ function TrafficLights({
   onMaximize: () => void;
   focused: boolean;
 }) {
-  const base =
-    "group/light flex h-3 w-3 items-center justify-center rounded-full transition-colors";
+  /* The visible dot stays macOS-sized (12px), but the button's actual hit
+     area is bigger (20px) so a slightly-off click lands on the button
+     instead of falling through to the title bar's drag handler. The hit box
+     itself must stay square (no rounded-* class) — Chromium clips click
+     hit-testing to a rounded element's own border-radius, which silently
+     shrank the enlarged area back down to the visible circle. */
+  const hit =
+    "group/light flex h-5 w-5 shrink-0 cursor-pointer items-center justify-center";
+  const dot = "h-3 w-3 rounded-full transition-colors";
   const glyph =
-    "opacity-0 transition-opacity group-hover/lights:opacity-100 pointer-events-none";
+    "pointer-events-none absolute opacity-0 transition-opacity group-hover/lights:opacity-100";
 
   return (
-    <div className="group/lights flex items-center gap-2">
-      <button
-        aria-label="Close"
-        onClick={onClose}
-        className={base}
-        style={{ background: focused ? "var(--traffic-red)" : "#c8ccd1" }}
-      >
+    <div className="group/lights flex items-center gap-0.5">
+      <button aria-label="Close" onClick={onClose} className={hit}>
+        <span
+          className={dot}
+          style={{ background: focused ? "var(--traffic-red)" : "#c8ccd1" }}
+        />
         <svg viewBox="0 0 10 10" className={`${glyph} h-2 w-2`}>
           <path
             d="M3 3l4 4M7 3l-4 4"
@@ -52,22 +58,20 @@ function TrafficLights({
           />
         </svg>
       </button>
-      <button
-        aria-label="Minimize"
-        onClick={onMinimize}
-        className={base}
-        style={{ background: focused ? "var(--traffic-yellow)" : "#c8ccd1" }}
-      >
+      <button aria-label="Minimize" onClick={onMinimize} className={hit}>
+        <span
+          className={dot}
+          style={{ background: focused ? "var(--traffic-yellow)" : "#c8ccd1" }}
+        />
         <svg viewBox="0 0 10 10" className={`${glyph} h-2 w-2`}>
           <path d="M2.5 5h5" stroke="#8a5a02" strokeWidth="1.4" strokeLinecap="round" />
         </svg>
       </button>
-      <button
-        aria-label="Maximize"
-        onClick={onMaximize}
-        className={base}
-        style={{ background: focused ? "var(--traffic-green)" : "#c8ccd1" }}
-      >
+      <button aria-label="Maximize" onClick={onMaximize} className={hit}>
+        <span
+          className={dot}
+          style={{ background: focused ? "var(--traffic-green)" : "#c8ccd1" }}
+        />
         <svg viewBox="0 0 10 10" className={`${glyph} h-2 w-2`}>
           <path
             d="M3 7V3h4"

@@ -10,7 +10,7 @@ export const profile = {
     "Full Stack Developer building production MERN/PERN systems — ERP platforms, OCR pipelines, and billing automation that real businesses run on.",
     "Currently a Full Stack Engineer at Sequoia Print, where I rebuilt a schema to resolve critical database ID overlap, cut API response times by 20% through strategic caching, and shipped an image OCR pipeline at 80% accuracy that replaced manual data entry entirely.",
     "Before that I interned at Brinavv Technologies on a School ERP fee-management system, where MongoDB indexing and aggregation pipelines took 45% off API response times and lifted payment throughput by 30%.",
-    "Outside work I build for hackathons: Top 40 at Smart India Hackathon 2025, Top 100 of 3,700+ teams in the Google Solution Challenge, and a Best Frontend Award at AI Unleashed.",
+    "Outside work I build for hackathons: Top 40 in the internal round of Smart India Hackathon 2025, Top 100 of 3,700+ teams in the Google Solution Challenge, and a Best Frontend Award at AI Unleashed.",
   ],
   education: {
     degree: "B.Tech, Computer Science and Engineering",

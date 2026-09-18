@@ -18,7 +18,7 @@ export const projects: Project[] = [
     name: "MediMitra",
     tagline: "AI-powered telemedicine platform",
     period: "Sep 2025 — Oct 2025",
-    accolade: "Smart India Hackathon 2025 — Top 40",
+    accolade: "Smart India Hackathon 2025 — Top 40 (Internal Round)",
     description: [
       "Cross-platform (Web + Android) telemedicine platform with WebRTC video consultations and Socket.io messaging.",
       "Multilingual AI symptom checker covering English, Hindi and Punjabi, served by a containerized FastAPI microservice.",

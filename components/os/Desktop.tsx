@@ -33,7 +33,10 @@ export function Desktop() {
           className="object-cover"
         />
       ) : (
-        <div className="wallpaper-fallback absolute inset-0" />
+        <div
+          className="wallpaper-fallback absolute inset-0"
+          style={wallpaper?.gradient ? { background: wallpaper.gradient } : undefined}
+        />
       )}
 
       <MenuBar />

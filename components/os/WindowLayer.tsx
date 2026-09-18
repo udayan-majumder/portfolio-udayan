@@ -4,7 +4,6 @@ import type { ComponentType } from "react";
 import dynamic from "next/dynamic";
 import { AnimatePresence } from "motion/react";
 import { Window } from "@/components/os/Window";
-import { Placeholder } from "@/components/apps/Placeholder";
 import type { AppId } from "@/lib/apps";
 import { useWindowStore, type WindowInstance } from "@/store/windowStore";
 
@@ -28,8 +27,10 @@ const registry: Record<AppId, ComponentType<AppProps>> = {
     import("@/components/apps/Spotify").then((m) => m.Spotify),
   ),
   vscode: dynamic(() => import("@/components/apps/VSCode").then((m) => m.VSCode)),
-  safari: Placeholder,
-  settings: Placeholder,
+  safari: dynamic(() => import("@/components/apps/Safari").then((m) => m.Safari)),
+  settings: dynamic(() =>
+    import("@/components/apps/Settings").then((m) => m.Settings),
+  ),
 };
 
 export function WindowLayer() {
